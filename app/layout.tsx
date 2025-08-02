@@ -8,7 +8,7 @@ import { CommandPalette } from '@/components/command-palette';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ColorPalette - Modern Tailwind CSS Color Tool',
+  title: 'PaletteUI - Modern Tailwind CSS Color Tool',
   description: 'Discover, copy, and organize Tailwind CSS colors with a beautiful, modern interface.',
 };
 
