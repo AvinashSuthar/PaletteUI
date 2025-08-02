@@ -79,6 +79,7 @@ export default function FavoritesPage() {
                       hex={color.hex}
                       value={color.value}
                       type={color.type}
+                      css=""
                     />
                   ))}
                 </div>
@@ -100,6 +101,7 @@ export default function FavoritesPage() {
                       value={gradient.value}
                       type={gradient.type}
                       size="lg"
+                      css={gradient.css}
                     />
                   ))}
                 </div>

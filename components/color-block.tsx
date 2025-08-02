@@ -46,7 +46,7 @@ export function ColorBlock({
       removeFromFavorites(name);
       setFavorite(false);
     } else {
-      addToFavorites({ name, hex, value, type });
+      addToFavorites({ name, hex, value, type, css });
       setFavorite(true);
     }
   };

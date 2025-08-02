@@ -4,6 +4,7 @@ export interface FavoriteColor {
   value: string;
   type: 'color' | 'gradient';
   addedAt: number;
+  css: string;
 }
 
 export const getFavorites = (): FavoriteColor[] => {
