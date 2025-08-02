@@ -1,0 +1,38 @@
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { Navigation } from '@/components/navigation';
+import { CommandPalette } from '@/components/command-palette';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'ColorPalette - Modern Tailwind CSS Color Tool',
+  description: 'Discover, copy, and organize Tailwind CSS colors with a beautiful, modern interface.',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navigation />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <CommandPalette />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
