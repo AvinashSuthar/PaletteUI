@@ -121,7 +121,7 @@ export default function PalettePage() {
                     ))}
                   </div>
                 </div>
-              ))}
+              ))} 
             </div>
           </TabsContent>
 
