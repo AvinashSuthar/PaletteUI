@@ -46,12 +46,7 @@ export function CommandPalette() {
   };
 
   // Flatten all colors for search
-  const allColors = tailwindColors.flatMap(palette =>
-    palette.shades.map(shade => ({
-      ...shade,
-      palette: palette.name
-    }))
-  );
+  const allColors = tailwindColors.map((p) => p.name)
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
@@ -100,20 +95,20 @@ export function CommandPalette() {
         <CommandSeparator />
 
         <CommandGroup heading="Colors">
-          {allColors.slice(0, 10).map((color) => (
+          {allColors.slice(0, 10).map((name) => (
             <CommandItem
-              key={color.name}
+              key={name}
               onSelect={() => runCommand(() => {
-                navigator.clipboard.writeText(color.hex);
+                navigator.clipboard.writeText(name);
                 router.push('/palette');
               })}
             >
               <div
-                className={`mr-2 h-4 w-4 rounded-sm ${color.value}`}
+                className={`mr-2 h-4 w-4 rounded-sm `}
               />
-              <span>{color.name}</span>
+              <span>{name}</span>
               <span className="ml-auto text-xs text-muted-foreground">
-                {color.hex}
+                {name}
               </span>
             </CommandItem>
           ))}
