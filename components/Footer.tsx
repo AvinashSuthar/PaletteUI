@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="w-full bg-background  py-6">
             <div className='w-full max-w-7xl mx-auto px-4 flex items-center justify-between  flex-col md:flex-row gap-4 mb-6  '>
-                <div className="flex items-center justify-center  ">
+                <Link href={"/"} className="flex items-center justify-center   ">
                     <Image
                         src="/ico.svg"
                         alt="PaletteUI Logo"
@@ -16,7 +16,7 @@ const Footer = () => {
                         className="rounded-full"
                     />
                     <h1 className="text-2xl font-bold ml-3">PaletteUI</h1>
-                </div>
+                </Link>
                 <div className='flex  sm:items-center items-start   gap-7'>
                     <Link
                         href="/"
