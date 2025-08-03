@@ -7,6 +7,7 @@ import { Moon, Sun, Palette, Home, Heart, Command } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
+import { GitHubStarButton } from '@/components/github-star-button';
 
 export function Navigation() {
   const pathname = usePathname();
@@ -62,6 +63,8 @@ export function Navigation() {
           </div>
 
           <div className="flex items-center space-x-2 w-1/3 justify-end">
+            <GitHubStarButton />
+
             <Button
               variant="ghost"
               size="sm"

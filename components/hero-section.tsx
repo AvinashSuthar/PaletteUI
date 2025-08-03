@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
 import { Palette, Heart } from 'lucide-react';
 import Link from 'next/link';
+import { HeroGitHubStar } from '@/components/hero-github-star';
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -94,7 +95,7 @@ export function HeroSection() {
             Perfect for designers and developers.
           </p>
 
-          <div className="flex relative z-10 flex-col sm:flex-row gap-4 justify-center mb-16" ref={buttonsRef}>
+          <div className="flex relative z-10 flex-col sm:flex-row gap-4 justify-center items-center mb-16" ref={buttonsRef}>
             <Link href="/palette">
               <Button size="lg" className="px-8 py-6 text-lg font-semibold">
                 <Palette className="mr-2 h-5 w-5" />
@@ -108,6 +109,8 @@ export function HeroSection() {
                 View Favorites
               </Button>
             </Link>
+
+            <HeroGitHubStar />
           </div>
 
           {/* Floating Color Blocks */}

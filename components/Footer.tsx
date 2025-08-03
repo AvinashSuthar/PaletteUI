@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react'
 import Image from 'next/image'
-import { GithubIcon, TwitterIcon, LinkedinIcon, InstagramIcon } from 'lucide-react';
+import { GithubIcon, TwitterIcon, LinkedinIcon, InstagramIcon, Star, Github } from 'lucide-react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 const Footer = () => {
     return (
@@ -37,7 +40,7 @@ const Footer = () => {
                         Favorites
                     </Link>
                 </div>
-                
+
 
             </div>
             <div className="max-w-7xl mx-auto px-4 border-t flex flex-col md:flex-row items-center justify-between gap-4">
@@ -52,7 +55,8 @@ const Footer = () => {
                         Contact Me
                     </a>
                 </div>
-                <div>
+                <div className="flex items-center gap-4">
+                    
                     <SocialMediaIcons />
                 </div>
             </div>
