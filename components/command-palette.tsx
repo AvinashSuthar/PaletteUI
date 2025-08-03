@@ -22,11 +22,13 @@ import {
 
 } from 'lucide-react';
 import { tailwindColors } from '@/lib/tailwind-colors';
+import { useToast } from '@/hooks/use-toast';
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const { toast } = useToast();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -99,8 +101,22 @@ export function CommandPalette() {
             <CommandItem
               key={name}
               onSelect={() => runCommand(() => {
-                navigator.clipboard.writeText(name);
-                router.push('/palette');
+                try {
+                  navigator.clipboard.writeText(name);
+                  toast({
+                    title: "Copied to clipboard!",
+                    description: `${name} has been copied to your clipboard.`,
+                    duration: 3000,
+                  });
+                  router.push('/palette');
+                } catch (error) {
+                  toast({
+                    title: "Copy failed",
+                    description: "Unable to copy to clipboard. Please try again.",
+                    variant: "destructive",
+                    duration: 3000,
+                  });
+                }
               })}
             >
               <div

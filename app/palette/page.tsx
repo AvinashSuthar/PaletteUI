@@ -32,29 +32,29 @@ export default function PalettePage() {
           block,
           { opacity: 0, y: 50, scale: 0.9 },
           {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: block,
-          start: 'top 90%',
-          toggleActions: 'play reverse play reverse',
-          once: false,
-        },
-        delay: 0.04,
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: block,
+              start: 'top 90%',
+              toggleActions: 'play reverse play reverse',
+              once: false,
+            },
+            delay: 0.04,
           }
         );
       });
-        }, containerRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, [searchTerm, activeTab]);
 
   const filteredColors = tailwindColors.filter(palette =>
     palette.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    palette.shades.some(shade => 
+    palette.shades.some(shade =>
       shade.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
@@ -75,7 +75,7 @@ export default function PalettePage() {
           <p className="text-xl text-muted-foreground mb-6">
             Explore all Tailwind CSS colors and gradients
           </p>
-          
+
           {/* Search */}
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -106,7 +106,7 @@ export default function PalettePage() {
             <div className="space-y-12">
               {filteredColors.map((palette) => (
                 <div key={palette.name} className="space-y-2">
-                  
+
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-10 gap-4">
                     {palette.shades.map((shade) => (
                       <div key={shade.name} className="color-block">
@@ -121,7 +121,7 @@ export default function PalettePage() {
                     ))}
                   </div>
                 </div>
-              ))} 
+              ))}
             </div>
           </TabsContent>
 
@@ -132,10 +132,6 @@ export default function PalettePage() {
                   <ColorBlock
                     name={gradient.name}
                     hex={gradient.description}
-                    className={cn(
-                      'bg-gradient-to-r',
-                      gradient.class
-                    )}
                     value={gradient.class}
                     type="gradient"
                     size="lg"

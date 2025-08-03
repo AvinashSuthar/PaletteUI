@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { addToFavorites, removeFromFavorites, isFavorite } from '@/lib/favorites';
 import { useEffect } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 interface ColorBlockProps {
   name: string;
@@ -30,15 +31,33 @@ export function ColorBlock({
 }: ColorBlockProps) {
   const [copied, setCopied] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setFavorite(isFavorite(name));
   }, [name]);
 
   const handleCopy = async (text: string) => {
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+
+      // Show toast notification
+      toast({
+        title: "Copied to clipboard!",
+        description: `${text} has been copied to your clipboard.`,
+        duration: 3000,
+      });
+    } catch (error) {
+      // Fallback for older browsers or if clipboard API fails
+      toast({
+        title: "Copy failed",
+        description: "Unable to copy to clipboard. Please try again.",
+        variant: "destructive",
+        duration: 3000,
+      });
+    }
   };
 
   const handleFavorite = () => {
@@ -103,7 +122,7 @@ export function ColorBlock({
               'h-8 w-8 p-0 backdrop-blur-sm',
               'bg-black/50 hover:bg-black/90 text-white'
             )}
-            onClick={() => handleCopy(hex)}
+            onClick={() => handleCopy(type === 'color' ? hex : value)}
           >
             {copied ? (
               <Check className="h-4 w-4" />
@@ -119,7 +138,7 @@ export function ColorBlock({
           <div className="flex items-center justify-between">
             <div>
               <p className="font-medium text-xs text-foreground">{name}</p>
-              <p className="text-xs text-muted-foreground">{hex}</p>
+              <p className="text-xs text-muted-foreground">{type === 'color' ? hex : value}</p>
             </div>
             {/* <Button
               size="sm"
