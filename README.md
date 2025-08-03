@@ -340,11 +340,7 @@ Found a bug? Have a feature request? Please [open an issue](https://github.com/y
 - **[Vercel](https://vercel.com/)** - For hosting and deployment
 - **[Next.js](https://nextjs.org/)** - For the amazing React framework
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 <div align="center">
 
